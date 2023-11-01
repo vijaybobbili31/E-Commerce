@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    environment{
+        staging_server="65.2.37.209"
+    }
+
+    stages {
+        stage('deploy to remote'){
+            steps{
+                sh 'scp ${workspace}/*' root@{staging_server}:/var/www/html/ecommerce/'
+            }
+        
+        }
+    }
+}
